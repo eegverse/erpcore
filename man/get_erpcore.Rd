@@ -6,10 +6,12 @@
 \alias{get_mmn}
 \alias{get_n2pc}
 \alias{get_n400}
+\alias{get_p3}
+\alias{get_lrp}
 \title{Download ERP Core Components}
 \usage{
 get_erpcore(
-  component = c("n170", "mmn", "n2pc", "n400"),
+  component = c("n170", "mmn", "n2pc", "n400", "p3", "lrp"),
   dest_path = NULL,
   conflicts = "error",
   type = c("raw", "bids", "all")
@@ -22,14 +24,24 @@ get_mmn(dest_path = NULL, conflicts = "error", type = c("raw", "bids", "all"))
 get_n2pc(dest_path = NULL, conflicts = "error", type = c("raw", "bids", "all"))
 
 get_n400(dest_path = NULL, conflicts = "error", type = c("raw", "bids", "all"))
+
+get_p3(dest_path = NULL, conflicts = "error", type = c("raw", "bids", "all"))
+
+get_lrp(dest_path = NULL, conflicts = "error", type = c("raw", "bids", "all"))
 }
 \arguments{
 \item{component}{Options are:
 \itemize{
-\item "n170": download data for the face-specific N170 component.
-\item "mmn": download data for the Mismatch Negativity component.
-\item "n2pc": download data for the N2pc spatial attention component.
-\item "n400": download data for the N400 semantic mismatch component.
+\item "n170": download data for the face-specific
+N170 component.
+\item "mmn": download data for the Mismatch Negativity
+component.
+\item "n2pc": download data for the N2pc spatial attention
+component.
+\item "n400": download data for the N400 semantic mismatch
+component.
+\item "p3": download the P3 data.
+\item "lrp": download the Lateralized Readiness Potential data.
 }}
 
 \item{dest_path}{destination file path}
@@ -49,7 +61,7 @@ get_n400(dest_path = NULL, conflicts = "error", type = c("raw", "bids", "all"))
 }}
 }
 \description{
-Download ERP Core Components
+Download individual components of the ERP Core
 }
 \section{Functions}{
 \itemize{
@@ -60,5 +72,14 @@ Download ERP Core Components
 \item \code{get_n2pc}: Retrieve N2pc data
 
 \item \code{get_n400}: Retrieve N400 data
+
+\item \code{get_p3}: Retrieve P3 data
+
+\item \code{get_lrp}: Retrieve LRP data
 }}
 
+\references{
+Kappenman, E.S., Farrens, J.L., Zhang, W., Stewart, A.X., & Luck,
+S.J. (2020). ERP CORE: An Open Resource for Human Event-Related Potential
+Research. PsyArxiv. https://doi.org/10.31234/osf.io/4azqm
+}
