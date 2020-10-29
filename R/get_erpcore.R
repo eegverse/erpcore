@@ -18,9 +18,9 @@
 #'   (the default): throw an error and abort the file transfer operation. *
 #'   "skip": skip the conflicting file(s) and continue transferring the
 #'   remaining files. * "overwrite": replace the existing file with the
-#'   transferred copy.
+#'   newly transferred copy.
 #' @param type The data is in three different formats: * "raw": download the raw
-#'   data and scripts. * "bids": download the raw data in scripts in a BIDS
+#'   data and scripts. * "bids": download the raw data and scripts in a BIDS
 #'   compatible format. * "all": download the raw and processed data and
 #'   scripts.
 #' @references Kappenman, E.S., Farrens, J.L., Zhang, W., Stewart, A.X., & Luck,
