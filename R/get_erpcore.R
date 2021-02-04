@@ -33,31 +33,27 @@ get_erpcore <- function(component = c("n170",
                                       "n2pc",
                                       "n400",
                                       "p3",
-                                      "lrp"),
+                                      "lrp",
+                                      "ern"),
                         dest_path = NULL,
                         conflicts = "error",
                         type = c("raw",
                                  "bids",
                                  "all")) {
-  component <- match.arg(component,
-                         c("n170",
-                           "mmn",
-                           "n2pc",
-                           "n400",
-                           "lrp",
-                           "p3"))
+  component <- match.arg(component)
+
   if (is.null(dest_path)) {
     out_dir <- choose.dir()
   }
 
   get_comp <-
     switch(component,
-         n170 = get_n170,#(dest_path = out_dir),
-         mmn = get_mmn,#(dest_path = out_dir),
-         n2pc = get_n2pc, #(dest_path = out_dir),
-         n400 = get_n400, #(dest_path = out_dir),
-         p3 = get_p3,#(dest_path = out_dir),
-         lrp = get_lrp)#(dest_path = out_dir))
+           n170 = get_n170, #(dest_path = out_dir),
+           mmn = get_mmn, #(dest_path = out_dir),
+           n2pc = get_n2pc, #(dest_path = out_dir),
+           n400 = get_n400, #(dest_path = out_dir),
+           p3 = get_p3, #(dest_path = out_dir),
+           lrp = get_lrp) #(dest_path = out_dir))
 
   get_comp(dest_path = out_dir,
            conflicts = conflicts,
@@ -80,12 +76,13 @@ get_n170 <- function(dest_path = NULL,
                      type = c("raw",
                               "bids",
                               "all")) {
-
+  type <- match.arg(type)
   osf_meta <- osfr::osf_retrieve_node("https://osf.io/pfde9/")
   download_data(osf_meta,
                 type = type,
                 conflicts = conflicts,
-                dest_path = dest_path)
+                dest_path = dest_path,
+                component = "n170")
 }
 
 #' @describeIn get_erpcore Retrieve MMN data
@@ -96,11 +93,13 @@ get_mmn <- function(dest_path = NULL,
                              "bids",
                              "all")) {
 
+  type <- match.arg(type)
   osf_meta <- osfr::osf_retrieve_node("https://osf.io/5q4xs/")
   download_data(osf_meta,
                 type = type,
                 conflicts = conflicts,
-                dest_path = dest_path)
+                dest_path = dest_path,
+                component = "mmn")
 }
 
 #' @describeIn get_erpcore Retrieve N2pc data
@@ -110,12 +109,13 @@ get_n2pc <- function(dest_path = NULL,
                      type = c("raw",
                               "bids",
                               "all")) {
-
+  type <- match.arg(type)
   osf_meta <- osfr::osf_retrieve_node("https://osf.io/thsqg/")
   download_data(osf_meta,
                 type = type,
                 conflicts = conflicts,
-                dest_path = dest_path)
+                dest_path = dest_path,
+                component = "n2pc")
 }
 
 #' @describeIn get_erpcore Retrieve N400 data
@@ -130,7 +130,8 @@ get_n400 <- function(dest_path = NULL,
   download_data(osf_meta,
                 type = type,
                 conflicts = conflicts,
-                dest_path = dest_path)
+                dest_path = dest_path,
+                component = "n400")
 }
 
 
@@ -141,29 +142,46 @@ get_p3 <- function(dest_path = NULL,
                    type = c("raw",
                             "bids",
                             "all")) {
-
+  type <- match.arg(type)
   osf_meta <- osfr::osf_retrieve_node("https://osf.io/etdkz/")
   download_data(osf_meta,
                 type = type,
                 conflicts = conflicts,
-                dest_path = dest_path)
+                dest_path = dest_path,
+                component = "p3")
 }
 
 #' @describeIn get_erpcore Retrieve LRP data
 #' @export
 get_lrp <- function(dest_path = NULL,
-                   conflicts = "error",
-                   type = c("raw",
-                            "bids",
-                            "all")) {
-
+                    conflicts = "error",
+                    type = c("raw",
+                             "bids",
+                             "all")) {
+  type <- match.arg(type)
   osf_meta <- osfr::osf_retrieve_node("https://osf.io/28e6c/")
   download_data(osf_meta,
                 type = type,
                 conflicts = conflicts,
-                dest_path = dest_path)
+                dest_path = dest_path,
+                component = "lrp")
 }
 
+#' @describeIn get_erpcore Retrieve LRP data
+#' @export
+get_ern <- function(dest_path = NULL,
+                    conflicts = "error",
+                    type = c("raw",
+                             "bids",
+                             "all")) {
+  type <- match.arg(type)
+  osf_meta <- osfr::osf_retrieve_node("https://osf.io/q6gwp/")
+  download_data(osf_meta,
+                type = type,
+                conflicts = conflicts,
+                dest_path = dest_path,
+                component = "ern")
+}
 
 
 #' Download the data from OSF
@@ -172,7 +190,9 @@ get_lrp <- function(dest_path = NULL,
 download_data <- function(osf_meta,
                           type,
                           conflicts,
-                          dest_path) {
+                          dest_path,
+                          component) {
+
   osf_files <- osfr::osf_ls_files(osf_meta)
 
   type <- match.arg(type,
@@ -183,6 +203,7 @@ download_data <- function(osf_meta,
                  raw = osf_files[2, ],
                  bids = osf_files[3, ],
                  all = osf_files[1, ])
+
   osfr::osf_download(
     type,
     path = dest_path,

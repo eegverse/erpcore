@@ -4,7 +4,7 @@
 \alias{download_data}
 \title{Download the data from OSF}
 \usage{
-download_data(osf_meta, type, conflicts, dest_path)
+download_data(osf_meta, type, conflicts, dest_path, component)
 }
 \description{
 Download the data from OSF

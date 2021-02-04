@@ -8,10 +8,11 @@
 \alias{get_n400}
 \alias{get_p3}
 \alias{get_lrp}
+\alias{get_ern}
 \title{Download ERP Core Components}
 \usage{
 get_erpcore(
-  component = c("n170", "mmn", "n2pc", "n400", "p3", "lrp"),
+  component = c("n170", "mmn", "n2pc", "n400", "p3", "lrp", "ern"),
   dest_path = NULL,
   conflicts = "error",
   type = c("raw", "bids", "all")
@@ -28,6 +29,8 @@ get_n400(dest_path = NULL, conflicts = "error", type = c("raw", "bids", "all"))
 get_p3(dest_path = NULL, conflicts = "error", type = c("raw", "bids", "all"))
 
 get_lrp(dest_path = NULL, conflicts = "error", type = c("raw", "bids", "all"))
+
+get_ern(dest_path = NULL, conflicts = "error", type = c("raw", "bids", "all"))
 }
 \arguments{
 \item{component}{Options are:
@@ -76,6 +79,8 @@ Download individual components of the ERP Core
 \item \code{get_p3}: Retrieve P3 data
 
 \item \code{get_lrp}: Retrieve LRP data
+
+\item \code{get_ern}: Retrieve LRP data
 }}
 
 \references{
