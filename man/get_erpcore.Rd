@@ -9,7 +9,7 @@
 \alias{get_p3}
 \alias{get_lrp}
 \alias{get_ern}
-\title{Download ERP Core Components}
+\title{Download ERP CORE Components}
 \usage{
 get_erpcore(
   component = c("n170", "mmn", "n2pc", "n400", "p3", "lrp", "ern"),
@@ -45,6 +45,7 @@ component.
 component.
 \item "p3": download the P3 data.
 \item "lrp": download the Lateralized Readiness Potential data.
+\item "ern": download the Error-Related Negativity dataset.
 }}
 
 \item{dest_path}{destination file path}
@@ -64,7 +65,7 @@ component.
 }}
 }
 \description{
-Download individual components of the ERP Core
+Download individual components of the ERP CORE dataset.
 }
 \section{Functions}{
 \itemize{
@@ -87,4 +88,9 @@ Download individual components of the ERP Core
 Kappenman, E.S., Farrens, J.L., Zhang, W., Stewart, A.X., & Luck,
 S.J. (2020). ERP CORE: An Open Resource for Human Event-Related Potential
 Research. PsyArxiv. https://doi.org/10.31234/osf.io/4azqm
+}
+\author{
+Matt Craddock \email{matt@mattcraddock.com}
+
+Kappenman, E. S., Farrens, J. L., Zhang, W., Stewart, A. X., & Luck, S. J.
 }

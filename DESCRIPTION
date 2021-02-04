@@ -2,7 +2,7 @@ Package: erpcore
 Type: Package
 Title: Download ERP CORE Data
 Version: 0.1.0
-Author: Matt Craddock
+Authors@R: person("Matt", "Craddock", role = c("aut", "cre", "cph"), email = "matt@mattcraddock.com")
 Maintainer: Matt Craddock <matt@mattcraddock.com>
 Description: Downloads data from the ERP Core datasets, currently stored on the 
     Open Science Framework (https://www.osf.io)

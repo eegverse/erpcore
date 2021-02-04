@@ -1,6 +1,7 @@
-#' Download ERP Core Components
+#' Download ERP CORE Components
 #'
-#' Download individual components of the ERP Core
+#' Download individual components of the ERP CORE dataset.
+#'
 #' @param component Options are:
 #' * "n170": download data for the face-specific
 #'   N170 component.
@@ -12,6 +13,7 @@
 #'   component.
 #' * "p3": download the P3 data.
 #' * "lrp": download the Lateralized Readiness Potential data.
+#' * "ern": download the Error-Related Negativity dataset.
 #' @param dest_path destination file path
 #' @param conflicts This determines what happens when a file with the same name
 #'   exists at the specified destination. Can be one of the following: * "error"
@@ -26,7 +28,8 @@
 #' @references Kappenman, E.S., Farrens, J.L., Zhang, W., Stewart, A.X., & Luck,
 #'   S.J. (2020). ERP CORE: An Open Resource for Human Event-Related Potential
 #'   Research. PsyArxiv. https://doi.org/10.31234/osf.io/4azqm
-
+#' @author Matt Craddock \email{matt@@mattcraddock.com}
+#' @author Kappenman, E. S., Farrens, J. L., Zhang, W., Stewart, A. X., & Luck, S. J.
 #' @export
 get_erpcore <- function(component = c("n170",
                                       "mmn",
