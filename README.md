@@ -5,7 +5,8 @@
 
 The goal of `erpcore` is to provide some simple command line functions
 for downloading the ERP CORE datasets (Kappenman, Farrens, Zhang,
-Stewart, & Luck, 2020) from the Open Science Framework website.
+Stewart, & Luck, 2020) from the [Open Science
+Framework](https://osf.io/) website.
 
 In their own words:
 

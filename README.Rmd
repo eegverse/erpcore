@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 # erpcore
 
-The goal of `erpcore` is to provide some simple command line functions for downloading the ERP CORE datasets (Kappenman, Farrens, Zhang, Stewart, & Luck, 2020) from the Open Science Framework website.
+The goal of `erpcore` is to provide some simple command line functions for downloading the ERP CORE datasets (Kappenman, Farrens, Zhang, Stewart, & Luck, 2020) from the [Open Science Framework](https://osf.io/) website.
 
 In their own words:
 
