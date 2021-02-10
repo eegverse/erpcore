@@ -29,7 +29,6 @@
 #'   S.J. (2020). ERP CORE: An Open Resource for Human Event-Related Potential
 #'   Research. PsyArxiv. https://doi.org/10.31234/osf.io/4azqm
 #' @author Matt Craddock \email{matt@@mattcraddock.com}
-#' @author Kappenman, E. S., Farrens, J. L., Zhang, W., Stewart, A. X., & Luck, S. J.
 #' @export
 get_erpcore <- function(component = c("n170",
                                       "mmn",

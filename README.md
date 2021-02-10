@@ -52,7 +52,7 @@ You can install the development version from
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("craddm/erpcore")
+remotes::install_github("eegverse/erpcore")
 ```
 
 ## Usage

@@ -91,6 +91,4 @@ Research. PsyArxiv. https://doi.org/10.31234/osf.io/4azqm
 }
 \author{
 Matt Craddock \email{matt@mattcraddock.com}
-
-Kappenman, E. S., Farrens, J. L., Zhang, W., Stewart, A. X., & Luck, S. J.
 }

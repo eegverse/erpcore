@@ -9,6 +9,14 @@
 Downloads data from the ERP Core datasets, currently stored on the 
     Open Science Framework (https://www.osf.io)
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/eegverse/erpcore}
+  \item Report bugs at \url{https://github.com/eegverse/erpcore/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Matt Craddock \email{matt@mattcraddock.com} [copyright holder]
 
