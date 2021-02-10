@@ -20,5 +20,14 @@ Useful links:
 \author{
 \strong{Maintainer}: Matt Craddock \email{matt@mattcraddock.com} [copyright holder]
 
+Other contributors:
+\itemize{
+  \item Emily S. Kappenman [copyright holder]
+  \item Jaclyn L. Farrens [copyright holder]
+  \item Wendy Zhang [copyright holder]
+  \item Andrew X. Stewart [copyright holder]
+  \item Steven J. Luck [copyright holder]
+}
+
 }
 \keyword{internal}
