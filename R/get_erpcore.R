@@ -27,7 +27,7 @@
 #'   scripts.
 #' @references Kappenman, E.S., Farrens, J.L., Zhang, W., Stewart, A.X., & Luck,
 #'   S.J. (2020). ERP CORE: An Open Resource for Human Event-Related Potential
-#'   Research. PsyArxiv. https://doi.org/10.31234/osf.io/4azqm
+#'   Research. NeuroImage. https://doi.org/10.1016/j.neuroimage.2020.117465
 #' @author Matt Craddock \email{matt@@mattcraddock.com}
 #' @export
 get_erpcore <- function(component = c("n170",

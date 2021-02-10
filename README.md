@@ -5,7 +5,7 @@
 
 The goal of `erpcore` is to provide some simple command line functions
 for downloading the ERP CORE (Kappenman, Farrens, Zhang, Stewart, &
-Luck, 2020) datasets from the [Open Science Framework](https://osf.io/)
+Luck, 2021) datasets from the [Open Science Framework](https://osf.io/)
 website.
 
 In their own words:
@@ -36,8 +36,9 @@ components](https://images.squarespace-cdn.com/content/v1/5abefa62d274cb16de90e9
 </center>
 
 Kappenman, E., Farrens, J., Zhang, W., Stewart, A. X., & Luck, S. J.
-(2020). ERP CORE: An Open Resource for Human Event-Related Potential
-Research \[Preprint\]. PsyArXiv. <https://doi.org/10.31234/osf.io/4azqm>
+(2021). ERP CORE: An Open Resource for Human Event-Related Potential
+Research. *NeuroImage*.
+<https://doi.org/10.1016/j.neuroimage.2020.117465>
 
 For more information about the ERP CORE, visit [their
 website](https://erpinfo.org/erp-core).
@@ -98,5 +99,5 @@ materials, you must distribute your contributions under the same CC
 BY-SA 4.0 license. Please credit us in any resulting publications,
 reports, or data distributions as: Kappenman, E. S., Farrens, J. L.,
 Zhang, W., Stewart, A. X., & Luck, S. J. (2020). ERP CORE: An open
-resource for human event-related potential research. NeuroImage.
+resource for human event-related potential research. *NeuroImage.*
 <https://doi.org/10.1016/j.neuroimage.2020.117465>

@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 # erpcore
 
-The goal of `erpcore` is to provide some simple command line functions for downloading the ERP CORE (Kappenman, Farrens, Zhang, Stewart, & Luck, 2020) datasets from the [Open Science Framework](https://osf.io/) website.
+The goal of `erpcore` is to provide some simple command line functions for downloading the ERP CORE (Kappenman, Farrens, Zhang, Stewart, & Luck, 2021) datasets from the [Open Science Framework](https://osf.io/) website.
 
 In their own words:
 
@@ -39,7 +39,7 @@ In their own words:
 
 </center>
 
-Kappenman, E., Farrens, J., Zhang, W., Stewart, A. X., & Luck, S. J. (2020). ERP CORE: An Open Resource for Human Event-Related Potential Research [Preprint]. PsyArXiv. <https://doi.org/10.31234/osf.io/4azqm>
+Kappenman, E., Farrens, J., Zhang, W., Stewart, A. X., & Luck, S. J. (2021). ERP CORE: An Open Resource for Human Event-Related Potential Research. *NeuroImage*. <https://doi.org/10.1016/j.neuroimage.2020.117465>
 
 For more information about the ERP CORE, visit [their website](https://erpinfo.org/erp-core).
 
@@ -62,7 +62,7 @@ The `get_erpcore()` function can be used to download individual components from 
 get_erpcore(component = "n170")
 ```
 
-The data can be requested in three different formats: 
+The data can be requested in three different formats:
 
 ```{r eval = FALSE}
 get_erpcore(component = "n170", type = "raw")
@@ -70,9 +70,9 @@ get_erpcore(component = "n170", type = "bids")
 get_erpcore(component = "n170", type = "all")
 ```
 
-  - `"raw"` returns the original data in `.set` format, along with processing scripts for the Matlab ERPLAB toolbox.
-  - `"bids"` returns the same data in a BIDS compliant organization.
-  - `"all"` returns the raw data, copies of fully-processed data, and copies of the data at every stage of preprocessing.
+-   `"raw"` returns the original data in `.set` format, along with processing scripts for the Matlab ERPLAB toolbox.
+-   `"bids"` returns the same data in a BIDS compliant organization.
+-   `"all"` returns the raw data, copies of fully-processed data, and copies of the data at every stage of preprocessing.
 
 You can also use one of the specific functions for each component. For example, to request the data for the N400 component in BIDS format, you can use:
 
@@ -82,4 +82,4 @@ get_n400(type = "bids")
 
 ## Information about Sharing and Copyright
 
-These resources are shared under the terms of a Creative Commons license (CC BY-SA 4.0). Briefly, you are free to copy, share, remix, transform, and build upon these resources in any way you desire. However, you are required to give appropriate credit, and if you share the resulting materials, you must distribute your contributions under the same CC BY-SA 4.0 license. Please credit us in any resulting publications, reports, or data distributions as: Kappenman, E. S., Farrens, J. L., Zhang, W., Stewart, A. X., & Luck, S. J. (2020). ERP CORE: An open resource for human event-related potential research. NeuroImage. https://doi.org/10.1016/j.neuroimage.2020.117465
+These resources are shared under the terms of a Creative Commons license (CC BY-SA 4.0). Briefly, you are free to copy, share, remix, transform, and build upon these resources in any way you desire. However, you are required to give appropriate credit, and if you share the resulting materials, you must distribute your contributions under the same CC BY-SA 4.0 license. Please credit us in any resulting publications, reports, or data distributions as: Kappenman, E. S., Farrens, J. L., Zhang, W., Stewart, A. X., & Luck, S. J. (2020). ERP CORE: An open resource for human event-related potential research. *NeuroImage.* <https://doi.org/10.1016/j.neuroimage.2020.117465>
