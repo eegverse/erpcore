@@ -25,6 +25,10 @@
 #'   data and scripts. * "bids": download the raw data and scripts in a BIDS
 #'   compatible format. * "all": download the raw and processed data and
 #'   scripts.
+#' @param subjects Optionally subsets one more of the 40 subjects in ERP CORE.
+#'   Subject IDs depend on the "type" argument: * c("1", "2", "3", ...) if
+#'   "type" is "raw" or "all". * c("sub-001", "sub-002", "sub-003", ...) if
+#'   "type" is "bids".
 #' @references Kappenman, E.S., Farrens, J.L., Zhang, W., Stewart, A.X., & Luck,
 #'   S.J. (2020). ERP CORE: An Open Resource for Human Event-Related Potential
 #'   Research. NeuroImage. https://doi.org/10.1016/j.neuroimage.2020.117465
@@ -41,7 +45,8 @@ get_erpcore <- function(component = c("n170",
                         conflicts = "error",
                         type = c("raw",
                                  "bids",
-                                 "all")) {
+                                 "all"),
+                        subjects = NULL) {
   component <- match.arg(component)
 
   if (is.null(dest_path)) {
@@ -59,7 +64,8 @@ get_erpcore <- function(component = c("n170",
 
   get_comp(dest_path = out_dir,
            conflicts = conflicts,
-           type = type)
+           type = type,
+           subjects = subjects)
 }
 
 #' @param dest_path destination file path
@@ -77,11 +83,13 @@ get_n170 <- function(dest_path = NULL,
                      conflicts = "error",
                      type = c("raw",
                               "bids",
-                              "all")) {
+                              "all"),
+                     subjects = NULL) {
   type <- match.arg(type)
   osf_meta <- osfr::osf_retrieve_node("https://osf.io/pfde9/")
   download_data(osf_meta,
                 type = type,
+                subjects = subjects,
                 conflicts = conflicts,
                 dest_path = dest_path,
                 component = "n170")
@@ -93,12 +101,14 @@ get_mmn <- function(dest_path = NULL,
                     conflicts = "error",
                     type = c("raw",
                              "bids",
-                             "all")) {
+                             "all"),
+                    subjects = NULL) {
 
   type <- match.arg(type)
   osf_meta <- osfr::osf_retrieve_node("https://osf.io/5q4xs/")
   download_data(osf_meta,
                 type = type,
+                subjects = subjects,
                 conflicts = conflicts,
                 dest_path = dest_path,
                 component = "mmn")
@@ -110,11 +120,13 @@ get_n2pc <- function(dest_path = NULL,
                      conflicts = "error",
                      type = c("raw",
                               "bids",
-                              "all")) {
+                              "all"),
+                     subjects = NULL) {
   type <- match.arg(type)
   osf_meta <- osfr::osf_retrieve_node("https://osf.io/thsqg/")
   download_data(osf_meta,
                 type = type,
+                subjects = subjects,
                 conflicts = conflicts,
                 dest_path = dest_path,
                 component = "n2pc")
@@ -126,11 +138,13 @@ get_n400 <- function(dest_path = NULL,
                      conflicts = "error",
                      type = c("raw",
                               "bids",
-                              "all")) {
+                              "all"),
+                     subjects = NULL) {
 
   osf_meta <- osfr::osf_retrieve_node("https://osf.io/29xpq/")
   download_data(osf_meta,
                 type = type,
+                subjects = subjects,
                 conflicts = conflicts,
                 dest_path = dest_path,
                 component = "n400")
@@ -143,11 +157,13 @@ get_p3 <- function(dest_path = NULL,
                    conflicts = "error",
                    type = c("raw",
                             "bids",
-                            "all")) {
+                            "all"),
+                   subjects = NULL) {
   type <- match.arg(type)
   osf_meta <- osfr::osf_retrieve_node("https://osf.io/etdkz/")
   download_data(osf_meta,
                 type = type,
+                subjects = subjects,
                 conflicts = conflicts,
                 dest_path = dest_path,
                 component = "p3")
@@ -159,11 +175,13 @@ get_lrp <- function(dest_path = NULL,
                     conflicts = "error",
                     type = c("raw",
                              "bids",
-                             "all")) {
+                             "all"),
+                    subjects = NULL) {
   type <- match.arg(type)
   osf_meta <- osfr::osf_retrieve_node("https://osf.io/28e6c/")
   download_data(osf_meta,
                 type = type,
+                subjects = subjects,
                 conflicts = conflicts,
                 dest_path = dest_path,
                 component = "lrp")
@@ -175,7 +193,8 @@ get_ern <- function(dest_path = NULL,
                     conflicts = "error",
                     type = c("raw",
                              "bids",
-                             "all")) {
+                             "all"),
+                    subjects = NULL) {
   type <- match.arg(type)
   osf_meta <- osfr::osf_retrieve_node("https://osf.io/q6gwp/")
   download_data(osf_meta,
@@ -193,21 +212,13 @@ download_data <- function(osf_meta,
                           type,
                           conflicts,
                           dest_path,
-                          component) {
+                          component,
+                          subjects) {
 
-  osf_files <- osfr::osf_ls_files(osf_meta)
-
-  type <- match.arg(type,
-                    c("raw",
-                      "bids",
-                      "all"))
-  type <- switch(type,
-                 raw = osf_files[2, ],
-                 bids = osf_files[3, ],
-                 all = osf_files[1, ])
+  files <- find_files(osf_meta, type, subjects)
 
   osfr::osf_download(
-    type,
+    files,
     path = dest_path,
     conflicts = conflicts,
     recurse = TRUE,
@@ -216,4 +227,40 @@ download_data <- function(osf_meta,
   )
 }
 
+#' Find relevant files on OSF
+#'
+#' @keywords internal
+find_files <- function(osf_meta, type, subjects) {
+
+  osf_files <- osfr::osf_ls_files(osf_meta)
+
+  type <- match.arg(type,
+                    c("raw",
+                      "bids",
+                      "all"))
+
+  folder <- switch(type,
+                   raw = osf_files[2, ],
+                   bids = osf_files[3, ],
+                   all = osf_files[1, ])
+
+  all_files <- osfr::osf_ls_files(folder, n_max = Inf)
+
+  all_subjects <- switch(type,
+                         raw = as.character(1:40),
+                         bids = sprintf("sub-%03d", 1:40),
+                         all = as.character(1:40))
+
+  invalid_subjects <- setdiff(subjects, all_subjects)
+  if (length(invalid_subjects) != 0) {
+    stop("Invalid subject(s): ",
+         paste(shQuote(invalid_subjects), collapse = ", ")
+    )
+  }
+
+  ignore_subjects <- setdiff(all_subjects, subjects)
+  files <- all_files[!all_files$name %in% ignore_subjects, ]
+
+  return(files)
+}
 
