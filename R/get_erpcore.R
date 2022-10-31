@@ -244,7 +244,9 @@ find_files <- function(osf_meta, type, subjects) {
                    bids = osf_files[3, ],
                    all = osf_files[1, ])
 
-  all_files <- osfr::osf_ls_files(folder, n_max = Inf)
+  files <- osfr::osf_ls_files(folder, n_max = Inf)
+
+  if (!is.null(subjects)) {
 
   all_subjects <- switch(type,
                          raw = as.character(1:40),
@@ -259,7 +261,8 @@ find_files <- function(osf_meta, type, subjects) {
   }
 
   ignore_subjects <- setdiff(all_subjects, subjects)
-  files <- all_files[!all_files$name %in% ignore_subjects, ]
+    files <- files[!files$name %in% ignore_subjects, ]
+  }
 
   return(files)
 }
