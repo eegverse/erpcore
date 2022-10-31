@@ -46,6 +46,8 @@ get_erpcore <- function(component = c("n170",
 
   if (is.null(dest_path)) {
     out_dir <- choose.dir()
+  } else {
+    out_dir <- dest_path
   }
 
   get_comp <-
