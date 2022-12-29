@@ -199,6 +199,7 @@ get_ern <- function(dest_path = NULL,
   osf_meta <- osfr::osf_retrieve_node("https://osf.io/q6gwp/")
   download_data(osf_meta,
                 type = type,
+                subjects = subjects,
                 conflicts = conflicts,
                 dest_path = dest_path,
                 component = "ern")
