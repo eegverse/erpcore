@@ -55,7 +55,8 @@ get_erpcore <- function(component = c("n170",
            n2pc = get_n2pc, #(dest_path = out_dir),
            n400 = get_n400, #(dest_path = out_dir),
            p3 = get_p3, #(dest_path = out_dir),
-           lrp = get_lrp) #(dest_path = out_dir))
+           lrp = get_lrp, #(dest_path = out_dir)),
+           ern = get_ern) #(dest_path = out_dir))
 
   get_comp(dest_path = out_dir,
            conflicts = conflicts,
